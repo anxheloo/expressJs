@@ -5,8 +5,13 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, "Name is required field!"],
     unique: true,
+    trim: true, //remove whitespaces before and after movie name
   },
-  description: String,
+  description: {
+    type: String,
+    required: [true, "Description is a required field!"],
+    trim: true,
+  },
   duration: {
     type: Number,
     required: [true, "Duration is required field!"],
@@ -14,6 +19,40 @@ const movieSchema = new mongoose.Schema({
   ratings: {
     type: Number,
     default: 1.0,
+  },
+  totalRating: {
+    type: Number,
+  },
+  releaseYear: {
+    type: Number,
+    required: [true, "Release year is a required field!"],
+  },
+  releaseDate: {
+    type: Date,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  genres: {
+    type: [String],
+    required: [true, "Genres field is required!"],
+  },
+  directors: {
+    type: [String],
+    required: [true, "Directors field is required!"],
+  },
+  coverImage: {
+    type: String,
+    required: [true, "Cover image is required field!"],
+  },
+  actors: {
+    type: [String],
+    required: [true, "actors is required field!"],
+  },
+  price: {
+    type: Number,
+    required: [true, "Price is required field!"],
   },
 });
 
